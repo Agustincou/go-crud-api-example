@@ -23,6 +23,10 @@ type Handler interface {
 	GetUpdateProductHandler() func(c *fiber.Ctx) error
 }
 
-type ProductsHandler struct {
+type productsHandler struct {
 	Handler
+}
+
+func NewProductsHandler() Handler {
+	return &productsHandler{}
 }

@@ -24,6 +24,10 @@ type inMemoryKVS struct {
 	KVS
 }
 
+func NewInMemoryKVS() KVS {
+	return &inMemoryKVS{}
+}
+
 func (k *inMemoryKVS) Set(_ context.Context, key string, value any) error {
 	valueBytes, err := json.Marshal(value)
 	if err != nil {
