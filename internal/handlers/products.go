@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/Agustincou/go-crud-api-example/internal/clients"
+	"github.com/Agustincou/go-crud-api-example/internal/services"
 
 	"github.com/gofiber/fiber/v2"
 	"go.uber.org/zap"
@@ -25,6 +26,14 @@ type Handler interface {
 
 type productsHandler struct {
 	Handler
+
+	kvsService       services.KVS
+	telemetryService services.Telemetry
+
+	timeClient  clients.Time
+	idGenClient clients.IDGenerator
+
+	logger *zap.Logger
 }
 
 func NewProductsHandler() Handler {
