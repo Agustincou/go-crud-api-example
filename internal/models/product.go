@@ -7,12 +7,12 @@ import (
 )
 
 type Product struct {
-	ID              string
-	Name            *string
-	Quantity        *int
-	Price           *float64
-	Owner           string
-	Status          enums.ProductStatus
-	DateCreated     time.Time
-	DateLastUpdated time.Time
+	ID              string              `json:"id"`
+	Name            *string             `json:"name,omitempty"`
+	Quantity        *int                `json:"quantity,omitempty"`
+	Price           *float64            `json:"price,omitempty"`
+	Owner           string              `json:"owner"`
+	Status          enums.ProductStatus `json:"status"`
+	DateCreated     time.Time           `json:"date_created"`
+	DateLastUpdated time.Time           `json:"date_last_updated"`
 }

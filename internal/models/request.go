@@ -6,7 +6,7 @@ import (
 )
 
 type CreateProductRequestHeader struct {
-	Owner []string `json:"Owner"`
+	Owner []string `json:"owner"`
 }
 
 type CreateProductRequestBody struct {
@@ -38,8 +38,7 @@ func (c *CreateProductRequest) MakeProduct(idGen clients.IDGenerator, time clien
 }
 
 type SearchProductParams struct {
-	Name *string `json:"name,omitempty"`
-
-	Offset int32 `json:"offset"`
-	Limit  int32 `json:"limit"`
+	Name   *string `json:"name,omitempty"`
+	Offset int32   `json:"offset"`
+	Limit  int32   `json:"limit"`
 }

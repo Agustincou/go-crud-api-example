@@ -6,7 +6,7 @@ import (
 )
 
 type Telemetry interface {
-	Send(name enums.MetricName, value float64, tags map[enums.MetricTagKey]string)
+	Send(name enums.MetricName, value float64, tags map[enums.MetricTagKey]string) //nolint:unused
 }
 
 type telemetryImpl struct {

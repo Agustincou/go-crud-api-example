@@ -10,7 +10,8 @@ var (
 )
 
 type Item struct {
-	Key   string
+	Key string
+
 	Value []byte
 }
 
@@ -30,6 +31,7 @@ func NewInMemoryKVS() KVS {
 
 func (k *inMemoryKVS) Set(_ context.Context, key string, value any) error {
 	valueBytes, err := json.Marshal(value)
+
 	if err != nil {
 		return err
 	}
@@ -49,11 +51,13 @@ func (k *inMemoryKVS) Get(_ context.Context, key string) (Item, error) {
 func (k *inMemoryKVS) Delete(_ context.Context, key string) (bool, error) {
 	if _, exists := data[key]; exists {
 		newData := map[string]Item{}
+
 		for dataKey, dataValue := range data {
 			if dataKey != key {
 				newData[key] = dataValue
 			}
 		}
+
 		data = newData
 	}
 

@@ -3,9 +3,10 @@ package routes
 import (
 	"log"
 
+	"github.com/gofiber/fiber/v2"
+
 	"github.com/Agustincou/go-crud-api-example/internal/errors"
 	"github.com/Agustincou/go-crud-api-example/internal/handlers"
-	"github.com/gofiber/fiber/v2"
 )
 
 func MakeApp(handler handlers.Handler) *fiber.App {
