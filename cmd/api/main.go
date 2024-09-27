@@ -4,11 +4,12 @@ import (
 	"log"
 	"os"
 
+	"go.uber.org/zap"
+
 	"github.com/Agustincou/go-crud-api-example/internal/clients"
 	"github.com/Agustincou/go-crud-api-example/internal/handlers"
 	"github.com/Agustincou/go-crud-api-example/internal/routes"
 	"github.com/Agustincou/go-crud-api-example/pkg/enums"
-	"go.uber.org/zap"
 )
 
 func main() {
@@ -24,7 +25,9 @@ func main() {
 
 func makeHandler() (handlers.Handler, error) {
 	var kvsClient clients.KVS
+
 	var telemetryClient clients.Telemetry
+
 	var logger *zap.Logger
 
 	if os.Getenv(string(enums.GoEnvironmentKey)) == string(enums.RemoteEnv) {

@@ -3,9 +3,10 @@ package routes
 import (
 	"log"
 
+	"github.com/gofiber/fiber/v2"
+
 	"github.com/Agustincou/go-crud-api-example/internal/errors"
 	"github.com/Agustincou/go-crud-api-example/internal/handlers"
-	"github.com/gofiber/fiber/v2"
 )
 
 func MakeApp(handler handlers.Handler) *fiber.App {
@@ -33,11 +34,11 @@ func MakeApp(handler handlers.Handler) *fiber.App {
 
 	matrixApi := app.Group("/products")
 	{
-		matrixApi.Post("/", handler.GetCreateProductHandler())
-		matrixApi.Get("/{id}", handler.GetGetProductHandler())
-		matrixApi.Delete("/{id}", handler.GetDeleteProductHandler())
-		matrixApi.Put("/{id}", handler.GetUpdateProductHandler())
-		matrixApi.Get("/search", handler.GetSearchProductHandler())
+		matrixApi.Post("/", handler.CreateProduct())
+		matrixApi.Get("/{id}", handler.GetProduct())
+		matrixApi.Delete("/{id}", handler.DeleteProduct())
+		matrixApi.Put("/{id}", handler.UpdateProduct())
+		matrixApi.Get("/search", handler.SearchProduct())
 	}
 
 	return app

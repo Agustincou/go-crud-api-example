@@ -1,11 +1,11 @@
 package handlers
 
 import (
-	"github.com/Agustincou/go-crud-api-example/internal/clients"
-	"github.com/Agustincou/go-crud-api-example/internal/services"
-
 	"github.com/gofiber/fiber/v2"
 	"go.uber.org/zap"
+
+	"github.com/Agustincou/go-crud-api-example/internal/clients"
+	"github.com/Agustincou/go-crud-api-example/internal/services"
 )
 
 type Handler interface {
@@ -17,23 +17,25 @@ type Handler interface {
 
 	Build() (Handler, error)
 
-	GetCreateProductHandler() func(c *fiber.Ctx) error
-	GetGetProductHandler() func(c *fiber.Ctx) error
-	GetSearchProductHandler() func(c *fiber.Ctx) error
-	GetDeleteProductHandler() func(c *fiber.Ctx) error
-	GetUpdateProductHandler() func(c *fiber.Ctx) error
+	CreateProduct() func(*fiber.Ctx) error
+	GetProduct() func(*fiber.Ctx) error
+	SearchProduct() func(*fiber.Ctx) error
+	DeleteProduct() func(*fiber.Ctx) error
+	UpdateProduct() func(*fiber.Ctx) error
 }
 
 type productsHandler struct {
 	Handler
 
-	kvsService       services.KVS
-	telemetryService services.Telemetry
+	kvsService services.KVS //nolint:unused
 
-	timeClient  clients.Time
-	idGenClient clients.IDGenerator
+	telemetryService services.Telemetry //nolint:unused
 
-	logger *zap.Logger
+	timeClient clients.Time //nolint:unused
+
+	idGenClient clients.IDGenerator //nolint:unused
+
+	logger *zap.Logger //nolint:unused
 }
 
 func NewProductsHandler() Handler {

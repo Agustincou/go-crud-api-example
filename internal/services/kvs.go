@@ -10,8 +10,8 @@ import (
 )
 
 type KVS interface {
-	SaveProduct(ctx context.Context, product models.Product) error
-	GetProductByID(ctx context.Context, id string) (*models.Product, error)
+	SaveProduct(ctx context.Context, product models.Product) error          //nolint:unused
+	GetProductByID(ctx context.Context, id string) (*models.Product, error) //nolint:unused
 }
 
 type kvsImpl struct {
@@ -43,6 +43,7 @@ func (k *kvsImpl) GetProductByID(ctx context.Context, id string) (*models.Produc
 	}
 
 	product := models.Product{}
+
 	unmErr := json.Unmarshal(item.Value, &product)
 	if unmErr != nil {
 		return nil, unmErr
