@@ -13,6 +13,7 @@ func (a *API) Error() string {
 }
 
 var (
+	Unimplemented    = &API{HttpStatus: http.StatusInternalServerError, Code: 999, Message: "unimplemented"}
 	InvalidName      = &API{HttpStatus: http.StatusBadRequest, Code: 1000, Message: "invalid name value"}
 	InvalidQuantity  = &API{HttpStatus: http.StatusBadRequest, Code: 1001, Message: "invalid quantity value"}
 	InvalidPrice     = &API{HttpStatus: http.StatusBadRequest, Code: 1002, Message: "invalid price value"}

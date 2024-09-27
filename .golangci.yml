@@ -118,8 +118,8 @@ linters-settings:
   importas:
     no-extra-aliases: true
     alias:
-      - pkg: package_path
-        alias: aliswillbe
+      - pkg: "github.com/Agustincou/go-crud-api-example/internal/errors"
+        alias: apierrors
   unused:
     field-writes-are-uses: false
     post-statements-are-reads: false

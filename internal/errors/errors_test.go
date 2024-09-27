@@ -13,7 +13,6 @@ func TestAPIErrors(t *testing.T) {
 		code       int
 		message    string
 	}{
-
 		{"InvalidName", InvalidName, http.StatusBadRequest, 1000, "invalid name value"},
 		{"InvalidQuantity", InvalidQuantity, http.StatusBadRequest, 1001, "invalid quantity value"},
 		{"InvalidPrice", InvalidPrice, http.StatusBadRequest, 1002, "invalid price value"},
