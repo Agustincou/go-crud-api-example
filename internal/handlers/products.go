@@ -7,6 +7,7 @@ import (
 	"go.uber.org/zap"
 
 	"github.com/Agustincou/go-crud-api-example/internal/clients"
+	apierrors "github.com/Agustincou/go-crud-api-example/internal/errors"
 	"github.com/Agustincou/go-crud-api-example/internal/services"
 )
 
@@ -77,8 +78,6 @@ func (h *productsHandler) WithIDGen(idGen clients.IDGenerator) Handler {
 
 // Build construye el handler y valida que todos los clientes estén configurados.
 func (h *productsHandler) Build() (Handler, error) {
-	// Aquí podrías validar que todos los clientes estén configurados correctamente.
-	// Por ejemplo:
 	if h.kvsService == nil || h.telemetryService == nil || h.timeClient == nil || h.idGenClient == nil || h.logger == nil {
 		return nil, fmt.Errorf("todos los clientes deben estar configurados")
 	}
@@ -88,40 +87,40 @@ func (h *productsHandler) Build() (Handler, error) {
 
 // CreateProduct maneja la creación de un producto.
 func (h *productsHandler) CreateProduct() func(*fiber.Ctx) error {
-	return func(c *fiber.Ctx) error {
+	return func(*fiber.Ctx) error {
 		// Implementación para crear un producto.
-		return c.Status(fiber.StatusNotImplemented).SendString("CreateProduct no implementado")
+		return apierrors.Unimplemented
 	}
 }
 
 // GetProduct maneja la obtención de un producto por ID.
 func (h *productsHandler) GetProduct() func(*fiber.Ctx) error {
-	return func(c *fiber.Ctx) error {
+	return func(*fiber.Ctx) error {
 		// Implementación para obtener un producto.
-		return c.Status(fiber.StatusNotImplemented).SendString("GetProduct no implementado")
+		return apierrors.Unimplemented
 	}
 }
 
 // SearchProduct maneja la búsqueda de productos.
 func (h *productsHandler) SearchProduct() func(*fiber.Ctx) error {
-	return func(c *fiber.Ctx) error {
+	return func(*fiber.Ctx) error {
 		// Implementación para buscar productos.
-		return c.Status(fiber.StatusNotImplemented).SendString("SearchProduct no implementado")
+		return apierrors.Unimplemented
 	}
 }
 
 // DeleteProduct maneja la eliminación de un producto.
 func (h *productsHandler) DeleteProduct() func(*fiber.Ctx) error {
-	return func(c *fiber.Ctx) error {
+	return func(*fiber.Ctx) error {
 		// Implementación para eliminar un producto.
-		return c.Status(fiber.StatusNotImplemented).SendString("DeleteProduct no implementado")
+		return apierrors.Unimplemented
 	}
 }
 
 // UpdateProduct maneja la actualización de un producto.
 func (h *productsHandler) UpdateProduct() func(*fiber.Ctx) error {
-	return func(c *fiber.Ctx) error {
+	return func(*fiber.Ctx) error {
 		// Implementación para actualizar un producto.
-		return c.Status(fiber.StatusNotImplemented).SendString("UpdateProduct no implementado")
+		return apierrors.Unimplemented
 	}
 }

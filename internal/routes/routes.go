@@ -32,13 +32,13 @@ func MakeApp(handler handlers.Handler) *fiber.App {
 		return nil
 	})
 
-	matrixApi := app.Group("/products")
+	matrixAPI := app.Group("/product")
 	{
-		matrixApi.Post("/", handler.CreateProduct())
-		matrixApi.Get("/{id}", handler.GetProduct())
-		matrixApi.Delete("/{id}", handler.DeleteProduct())
-		matrixApi.Put("/{id}", handler.UpdateProduct())
-		matrixApi.Get("/search", handler.SearchProduct())
+		matrixAPI.Post("/", handler.CreateProduct())
+		matrixAPI.Get("/:id", handler.GetProduct())
+		matrixAPI.Delete("/:id", handler.DeleteProduct())
+		matrixAPI.Put("/:id", handler.UpdateProduct())
+		matrixAPI.Get("/search", handler.SearchProduct())
 	}
 
 	return app
