@@ -11,7 +11,7 @@ type Validator struct {
 
 func (v *Validator) Check(req models.UpdateProductRequestBody) error {
 	checks := new(quantityCheck)
-	
+
 	checks.LinkWith(new(priceCheck))
 
 	return checks.Check(req)
