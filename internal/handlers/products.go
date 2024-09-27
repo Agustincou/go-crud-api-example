@@ -17,11 +17,11 @@ type Handler interface {
 
 	Build() (Handler, error)
 
-	CreateProductHandler() func(*fiber.Ctx) error
-	GetProductHandler() func(*fiber.Ctx) error
-	SearchProductHandler() func(*fiber.Ctx) error
-	DeleteProductHandler() func(*fiber.Ctx) error
-	UpdateProductHandler() func(*fiber.Ctx) error
+	CreateProduct() func(*fiber.Ctx) error
+	GetProduct() func(*fiber.Ctx) error
+	SearchProduct() func(*fiber.Ctx) error
+	DeleteProduct() func(*fiber.Ctx) error
+	UpdateProduct() func(*fiber.Ctx) error
 }
 
 type productsHandler struct {
