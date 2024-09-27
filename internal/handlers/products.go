@@ -10,40 +10,32 @@ import (
 
 type Handler interface {
 	WithKvsClient(clients.KVS) Handler
-
 	WithTelemetry(clients.Telemetry) Handler
-
 	WithLogger(*zap.Logger) Handler
-
 	WithTimeHandler(clients.Time) Handler
-
 	WithIDGen(clients.IDGenerator) Handler
 
 	Build() (Handler, error)
 
 	GetCreateProductHandler() func(*fiber.Ctx) error
-
 	GetGetProductHandler() func(*fiber.Ctx) error
-
 	GetSearchProductHandler() func(*fiber.Ctx) error
-
 	GetDeleteProductHandler() func(*fiber.Ctx) error
-
 	GetUpdateProductHandler() func(*fiber.Ctx) error
 }
 
 type productsHandler struct {
 	Handler
 
-	kvsService services.KVS
+	kvsService services.KVS //nolint:unused
 
-	telemetryService services.Telemetry
+	telemetryService services.Telemetry //nolint:unused
 
-	timeClient clients.Time
+	timeClient clients.Time //nolint:unused
 
-	idGenClient clients.IDGenerator
+	idGenClient clients.IDGenerator //nolint:unused
 
-	logger *zap.Logger
+	logger *zap.Logger //nolint:unused
 }
 
 func NewProductsHandler() Handler {
