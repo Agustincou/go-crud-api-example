@@ -20,7 +20,6 @@ type kvsImpl struct {
 
 func NewKVS(client clients.KVS) KVS {
 	return &kvsImpl{
-
 		client: client,
 	}
 }

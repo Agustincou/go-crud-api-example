@@ -10,8 +10,7 @@ var (
 )
 
 type Item struct {
-	Key string
-
+	Key   string
 	Value []byte
 }
 
