@@ -9,7 +9,7 @@ run:
   timeout: 5m
   # Exit code when at least one issue was found.
   # Default: 1
-  issues-exit-code: 2
+  issues-exit-code: 10
   # Include test files or not.
   # Default: true
   tests: false
