@@ -108,7 +108,7 @@ linters:
 
 linters-settings:
   gci:
-    custom-oder: true
+    custom-order: true
     sections:
       - standard
       - default

@@ -1,4 +1,4 @@
-package main
+package main //nolint: pkgnamechecker
 
 import (
 	"log"
@@ -13,7 +13,6 @@ import (
 )
 
 func main() {
-
 	handler, handlerErr := makeHandler()
 	if handlerErr != nil {
 		log.Fatal(handlerErr)
