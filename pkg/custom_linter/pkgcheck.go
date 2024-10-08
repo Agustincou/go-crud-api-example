@@ -34,13 +34,13 @@ func run(pass *analysis.Pass) (interface{}, error) {
 		fset := token.NewFileSet()
 
 		// Parsear el archivo Go
-		node, err := parser.ParseFile(fset, filePath, nil, parser.ParseComments)
+		node, err := parser.ParseFile(fset, filePath, nil, parser.PackageClauseOnly|parser.ParseComments)
 		if err != nil {
 			return nil, fmt.Errorf("error al analizar el archivo %s: %w", filePath, err)
 		}
 
-		// Verificar si el archivo tiene el comentario de ignore
-		if hasNolintComment(node.Comments) {
+		// Verificar si el archivo tiene el comentario de ignore en la misma línea
+		if hasNolintComment(pass.Fset, node.Comments, node.Name.Pos()) {
 			continue // Ignorar este archivo
 		}
 
@@ -64,10 +64,15 @@ func run(pass *analysis.Pass) (interface{}, error) {
 }
 
 // Función para verificar si hay un comentario que ignora el análisis
-func hasNolintComment(comments []*ast.CommentGroup) bool {
+func hasNolintComment(fset *token.FileSet, comments []*ast.CommentGroup, pos token.Pos) bool {
+	// Obtener la posición de la línea donde se declara el paquete
+	pkgPos := fset.Position(pos)
+
 	for _, group := range comments {
 		for _, comment := range group.List {
-			if strings.Contains(comment.Text, "//nolint: pkgnamechecker") {
+			commentPos := fset.Position(comment.Pos())
+			// Verificar si el comentario está en la misma línea que la declaración del paquete
+			if commentPos.Line == pkgPos.Line && strings.Contains(comment.Text, "//nolint: pkgnamechecker") {
 				return true
 			}
 		}
