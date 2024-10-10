@@ -47,7 +47,7 @@ func (k *inMemoryKVS) Get(_ context.Context, key string) (Item, error) {
 	return data[key], nil
 }
 
-func (k *inMemoryKVS) Delete(_ context.Context, key string) (bool, error) {
+func (k *inMemoryKVS) Delete(_ context.Context, key string) (bool, error) { //nolint: unused
 	if _, exists := data[key]; exists {
 		newData := map[string]Item{}
 
