@@ -28,7 +28,7 @@ func NewInMemoryKVS() KVS {
 	return &inMemoryKVS{}
 }
 
-func (k *inMemoryKVS) Set(_ context.Context, key string, value any) error {
+func (k *inMemoryKVS) Set(_ context.Context, key string, value any) error { //nolint: unused
 	valueBytes, err := json.Marshal(value)
 
 	if err != nil {
@@ -43,11 +43,11 @@ func (k *inMemoryKVS) Set(_ context.Context, key string, value any) error {
 	return nil
 }
 
-func (k *inMemoryKVS) Get(_ context.Context, key string) (Item, error) {
+func (k *inMemoryKVS) Get(_ context.Context, key string) (Item, error) { //nolint: unused
 	return data[key], nil
 }
 
-func (k *inMemoryKVS) Delete(_ context.Context, key string) (bool, error) {
+func (k *inMemoryKVS) Delete(_ context.Context, key string) (bool, error) { //nolint: unused
 	if _, exists := data[key]; exists {
 		newData := map[string]Item{}
 
