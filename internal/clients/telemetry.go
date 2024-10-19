@@ -22,7 +22,7 @@ func NewLogTelemetry() Telemetry {
 	}
 }
 
-func (l *logTelemetry) Post(name enums.MetricName, _ float64, tags map[enums.MetricTagKey]string) {
+func (l *logTelemetry) Post(name enums.MetricName, _ float64, tags map[enums.MetricTagKey]string) { //nolint: unused
 	defer l.logger.Sync()
 
 	fields := make([]zap.Field, 0, len(tags))
