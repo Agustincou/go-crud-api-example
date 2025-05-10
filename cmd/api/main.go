@@ -1,4 +1,4 @@
-package main
+package main //nolint: pkgnamechecker
 
 import (
 	"log"
