@@ -1,6 +1,6 @@
 module github.com/Agustincou/go-crud-api-example
 
-go 1.22.0
+go 1.24.2
 
 require (
 	github.com/stretchr/testify v1.9.0
