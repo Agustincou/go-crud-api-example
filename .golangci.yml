@@ -1,67 +1,76 @@
-run:
-  concurrency: 4
-  timeout: 5m
-  issues-exit-code: 2
-  tests: false
-  build-tags:
-    - mytag
-  modules-download-mode: readonly
-  allow-parallel-runners: true
-  allow-serial-runners: true
-output:
-  formats:
-    - format: colored-line-number
-      path: stdout
-  print-issued-lines: true
-  print-linter-name: true
-  uniq-by-line: true
-  path-prefix: ""
-  sort-results: false
-  show-stats: true
+version: "2"
 
 linters:
-  disable-all: true
+  default: none
   enable:
     - whitespace
     - wsl
     - musttag
     - unused
-    - gci
     - importas
     - tagliatelle
+  settings:
+    importas:
+      no-extra-aliases: true
+      alias:
+        - pkg: "github.com/Agustincou/go-crud-api-example/internal/errors"
+          alias: apierrors
+    unused:
+      field-writes-are-uses: false
+      post-statements-are-reads: false
+      exported-fields-are-used: false
+      parameters-are-used: false
+      local-variables-are-used: false
+      generated-is-used: true
+    tagliatelle:
+      case:
+        use-field-name: true
+        rules:
+          json: snake
+          yaml: camel
+          xml: camel
+          mapstructure: kebab
+          env: upperSnake
+          envconfig: upperSnake
+  exclusions:
+    rules:
+      # Exclude some `unused` messages.
+      - linters:
+          - unused
+        text: "var _ is unused"
 
-linters-settings:
-  gci:
-    custom-oder: true
-    sections:
-      - standard
-      - default
-      - blank
-      - dot
-      - localmodule
-  importas:
-    no-extra-aliases: true
-    alias:
-      - pkg: "github.com/Agustincou/go-crud-api-example/internal/errors"
-        alias: apierrors
-  unused:
-    field-writes-are-uses: false
-    post-statements-are-reads: false
-    exported-fields-are-used: false
-    parameters-are-used: false
-    local-variables-are-used: false
-    generated-is-used: true
-  tagliatelle:
-    case:
-      use-field-name: true
-      rules:
-        json: snake
-        yaml: camel
-        xml: camel
-        mapstructure: kebab
-        env: upperSnake
-        envconfig: upperSnake
+run:
+  concurrency: 4
+  timeout: 5m
+  issues-exit-code: 2
+  tests: false
+  modules-download-mode: readonly
+  allow-parallel-runners: true
+  allow-serial-runners: true
+
+output:
+  formats:
+    text:
+      colors: true
+      print-issued-lines: true
+      print-linter-name: true
+  path-prefix: ""
+  sort-order:
+    - severity
+  show-stats: true
 
 issues:
-  exclude:
-    - "var `_` is unused"
+  # Maximum issues count per one linter.
+  # Set to 0 to disable.
+  # Default: 50
+  max-issues-per-linter: 0
+  # Maximum count of issues with the same text.
+  # Set to 0 to disable.
+  # Default: 3
+  max-same-issues: 0
+  # Make issues output unique by line.
+  # Default: true
+  uniq-by-line: false
+  # Fix found issues (if it's supported by the linter).
+  # Default: false
+  fix: false
